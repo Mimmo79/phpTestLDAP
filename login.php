@@ -17,7 +17,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Autenticazione con Active Directory</h1>
-        <form action="ldap.php" method="post">
+        <form action="ldap+.php" method="post">
             <input type="text" name="username" /><br>
             <input type="text" name="password" /><br>
             <input type="submit" value="Login" /><br>          
