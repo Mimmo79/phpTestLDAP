@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
 
-$ldap_dn = "uid=".$_POST["username"].",DC=intranet,DC=comune,DC=forli,DC=fc,DC=it"; //DC=intranet,DC=comune,DC=forli,DC=fc,DC=it -- dc=example,dc=com
+$ldap_dn = "uid=".$_POST["username"].",ou=scientists,dc=example,dc=com"; //DC=intranet,DC=comune,DC=forli,DC=fc,DC=it -- dc=example,dc=com
 $ldap_password = $_POST["password"];
 
-$ldap_con =   ldap_connect("w2k12dcforl01.intranet.comune.forli.fc.it", 389); //ldap.forumsys.com
-//ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION,3);
+$ldap_con =   ldap_connect("ldap.forumsys.com", 389); //w2k12dcforl01.intranet.comune.forli.fc.it -- ldap.forumsys.com 
+ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION,3);
 
 //verifico la connessione al server
 if ($ldap_con === FALSE) {
@@ -22,7 +22,7 @@ if ($ldap_con === FALSE) {
 
 
 
-if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)){
+if(@ldap_bind($ldap_con, $ldap_dn, $ldap_password)){
     echo "Autenticato";
 }else{
     echo "Credenziali non valide";

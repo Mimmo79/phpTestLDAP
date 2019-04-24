@@ -21,12 +21,12 @@ and open the template in the editor.
         if(ldap_bind($ldap_con, $ldap_dn, $ldap_password)){
             echo "accesso eseguito correttamente";
             //creo un  per la ricerca es. uid=newton
-            $filter     = "(uid=newton)";
+            $filter     = "(uid=*)";
             $result     = ldap_search($ldap_con, "dc=example,dc=com", $filter) or exit("Non è possibile eseguire la ricerca");
             $entries    = ldap_get_entries($ldap_con, $result);
             
             print "<pre>";
-            print_r($entries);
+            var_dump($entries);
             print "</pre>";
                     
         } else {
